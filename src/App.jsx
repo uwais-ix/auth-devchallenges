@@ -7,6 +7,8 @@ import {auth} from './firebaseConfig';
 import {onAuthStateChanged} from 'firebase/auth';
 
 import Footer from './components/Footer';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const notAuthRoutes = [{path: '/login'}, {path: '/signup'}];
 
@@ -35,6 +37,7 @@ const App = () => {
     <>
       <Outlet />
       <Footer />
+      <ToastContainer />
     </>
   );
 };

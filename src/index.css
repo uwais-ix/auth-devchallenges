@@ -14,7 +14,7 @@
     @apply flex flex-col items-center justify-center;
   }
   .card {
-    @apply border1 px-5 py-10 max-w-md;
+    @apply border1 px-8 py-10 max-w-md;
   }
 
   .form {
@@ -34,7 +34,7 @@
   }
 
   .icon {
-    @apply text-xl mx-2;
+    @apply text-xl ml-2 text-slate-500;
   }
 
   .logo {

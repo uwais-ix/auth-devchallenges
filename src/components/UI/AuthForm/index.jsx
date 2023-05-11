@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {toast} from 'react-toastify';
 import {RiLock2Fill, RiMailFill} from 'react-icons/ri';
 
 const AuthForm = ({
@@ -14,7 +15,8 @@ const AuthForm = ({
     e.preventDefault();
     setSubmitting(true);
 
-    const resp = await onSubmit(credentials?.email, credentials?.password);
+    // const resp = await onSubmit(credentials?.email, credentials?.password);
+    toast('toasting away your worries');
     // todo provide user feedback
 
     setSubmitting(false);
