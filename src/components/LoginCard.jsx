@@ -1,10 +1,9 @@
 import AuthForm from './UI/AuthForm';
 import Logo from './UI/Logo';
 
-const LoginCard = () => {
-  const onSubmit = (email, password) => {
+import {loginWithEmailPassword} from '../BaaS/auth-firebase';
 
-  };
+const LoginCard = () => {
   return (
     <div>
       <Logo />
@@ -12,7 +11,7 @@ const LoginCard = () => {
       <h1>Login</h1>
       <AuthForm
         submitText={'Login'}
-        onSubmit={onSubmit}
+        onSubmit={loginWithEmailPassword}
       />
     </div>
   );
