@@ -16,14 +16,16 @@ const App = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // user is logged in
+      const isOnAuthRoute = !notAuthRoutes.some(
+        (route) => route.path === location.pathname
+      );
+
+      // redirect on user login but not token refresh, user navigation..
+      if (user && !isOnAuthRoute) {
         navigate('/');
-      } else if (
-        !user &&
-        !notAuthRoutes.some((route) => route.path === location.pathname)
-      ) {
-        // user not logged in and on a protected route
+      }
+      // prevent access to protected routes when not logged in
+      else if (!user && isOnAuthRoute) {
         navigate('/login');
       }
     });

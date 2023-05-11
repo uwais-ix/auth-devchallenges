@@ -2,7 +2,7 @@ import LoginCard from '../components/LoginCard';
 import SignupCard from '../components/SignupCard';
 
 const Auth = ({login = false}) => {
-  return login ? <LoginCard /> : <SignupCard />;
+  return <div className='container'>{login ? <LoginCard /> : <SignupCard />}</div>;
 };
 
 export default Auth;
