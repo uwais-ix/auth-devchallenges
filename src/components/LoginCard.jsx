@@ -5,10 +5,14 @@ import Logo from './UI/Logo';
 import SocialAuth from './UI/SocialAuth';
 import {motion} from 'framer-motion';
 
-import {loginWithEmailPassword} from '../BaaS/auth-firebase';
+import {Authenticator} from '../BaaS/auth-firebase';
 
 const LoginCard = () => {
   const navigate = useNavigate();
+
+  const loginWithEmailPassword = (...args) => {
+    return Authenticator('login/with_emailPassword', ...args);
+  };
 
   return (
     <motion.div
@@ -30,7 +34,7 @@ const LoginCard = () => {
         onSubmit={loginWithEmailPassword}
       />
 
-      <SocialAuth />
+      <SocialAuth login />
 
       <span className='form_alternate'>
         Already a member?{' '}

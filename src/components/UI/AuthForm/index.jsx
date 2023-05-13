@@ -1,23 +1,34 @@
 import {useState} from 'react';
 import {toast} from 'react-toastify';
 import {RiLock2Fill, RiMailFill} from 'react-icons/ri';
+import {auth} from '../../../firebaseConfig';
 
+// authentication form used for both login and signup
 const AuthForm = ({
   submitText = 'Click',
-  onSubmit = () => {
+  onSubmit = (email, password) => {
     throw Error('onSubmit Function not provided || AuthForm Component');
   },
 }) => {
+  // credentials state
   const [credentials, setCredentials] = useState({});
+
+  // submitting state to prevent multiple submissions
   const [submitting, setSubmitting] = useState(false);
 
+  // submit handler
   const onFormSubmit = async (e) => {
     e.preventDefault();
+
     setSubmitting(true);
 
-    // const resp = await onSubmit(credentials?.email, credentials?.password);
-    toast('toasting away your worries');
-    // todo provide user feedback
+    // submit credentials to provided props.onSubmit function
+    const resp = await onSubmit(credentials?.email, credentials?.password);
+    if (resp?.code) {
+      toast.error(resp?.code);
+    } else {
+      toast('toasting away your worries');
+    }
 
     setSubmitting(false);
   };
@@ -53,7 +64,7 @@ const AuthForm = ({
       <button
         type='submit'
         disabled={submitting}
-        className='submit_button'
+        className='submit_button disabled:opacity-50'
       >
         {submitText}
       </button>

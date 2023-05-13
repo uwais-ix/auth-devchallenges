@@ -5,10 +5,14 @@ import Logo from './UI/Logo';
 import SocialAuth from './UI/SocialAuth';
 import {motion} from 'framer-motion';
 
-import {createUserWithEmailPassword} from '../BaaS/auth-firebase';
+import {Authenticator} from '../BaaS/auth-firebase';
 
 const SignupCard = () => {
   const navigate = useNavigate();
+
+  const signupWithEmailPassword = (...args) => {
+    return Authenticator('signup/with_emailPassword', ...args);
+  };
 
   return (
     <motion.div
@@ -34,7 +38,7 @@ const SignupCard = () => {
 
       <AuthForm
         submitText={'Start coding now'}
-        onSubmit={createUserWithEmailPassword}
+        onSubmit={signupWithEmailPassword}
       />
       <SocialAuth />
 

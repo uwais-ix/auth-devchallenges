@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// not protected routes
 const notAuthRoutes = [{path: '/login'}, {path: '/signup'}];
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      // check if user is on a protected route
       const isOnAuthRoute = !notAuthRoutes.some(
         (route) => route.path === location.pathname
       );
@@ -37,7 +39,7 @@ const App = () => {
     <>
       <Outlet />
       <Footer />
-      <ToastContainer />
+      <ToastContainer position='bottom-right'/>
     </>
   );
 };
